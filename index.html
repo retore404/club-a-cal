@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>普通カード vs CLUB-Aカード</title>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <h1>JAL 普通カード vs CLUB-Aカード</h1>
+    <span>*2022/12/30時点での情報で計算</span><br>
+    <span>*自分が羽田⇔どこか以外使わないので羽田以外の空港間の発着はないものとする</span><br>
+    <span>*端数の切り上げ等は行わない（あくまで概算）</span>
+    <span>*計算結果無保証</span>
+    <h2>利用内容</h2>
+    <table>
+      <tr>
+        <th style="display:none;">出発地</th>
+        <th>到着地</th>
+        <th>クラス</th>
+        <th>利用運賃</th>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use1-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use1-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use1-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use1-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use2-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use2-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use2-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use2-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use3-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use3-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use3-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use3-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use4-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use4-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use4-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use4-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use5-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use5-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use5-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use5-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use6-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use6-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use6-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use6-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use7-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use7-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use7-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use7-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use8-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use8-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use8-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use8-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use9-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use9-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use9-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use9-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use10-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use10-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use10-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use10-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use11-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use11-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use11-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use11-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use12-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use12-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use12-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use12-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use13-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use13-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use13-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use13-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use14-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use14-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use14-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use14-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use15-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use15-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use15-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use15-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use16-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use16-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use16-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use16-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use17-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use17-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use17-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use17-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use18-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use18-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use18-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use18-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use19-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use19-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use19-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use19-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="display:none;">
+          <select id="use20-depart">
+            <option value="none">--</option>
+            <option value="haneda">羽田</option>
+          </select>
+        </td>
+        <td>
+          <select id="use20-arrival">
+            <option value="none">--</option>
+            <option value="osaka">大阪</option>
+            <option value="sapporo">札幌</option>
+            <option value="nagoya">名古屋</option>
+            <option value="fukuoka">福岡</option>
+            <option value="naha">那覇</option>
+            <option value="memambetsu">女満別</option>
+            <option value="asahikawa">旭川</option>
+            <option value="kushiro">釧路</option>
+            <option value="obihiro">帯広</option>
+            <option value="hakodate">函館</option>
+            <option value="aomori">青森</option>
+            <option value="misawa">三沢</option>
+            <option value="akita">秋田</option>
+            <option value="hanamaki">花巻</option>
+            <option value="sendai">仙台</option>
+            <option value="yamagata">山形</option>
+            <option value="komatsu">小松</option>
+            <option value="nankishirahama">南紀白浜</option>
+            <option value="okayama">岡山</option>
+            <option value="izumo">出雲</option>
+            <option value="hiroshima">広島</option>
+            <option value="yamaguchiube">山口宇部</option>
+            <option value="tokushima">徳島</option>
+            <option value="takamatsu">高松</option>
+            <option value="kochi">高知</option>
+            <option value="matsuyama">松山</option>
+            <option value="kitakyushu">北九州</option>
+            <option value="oita">大分</option>
+            <option value="nagasaki">長崎</option>
+            <option value="kumamoto">熊本</option>
+            <option value="miyazaki">宮崎</option>
+            <option value="kagoshima">鹿児島</option>
+            <option value="amami">奄美大島</option>
+            <option value="kumejima">久米島</option>
+            <option value="miyako">宮古</option>
+            <option value="ishigaki">石垣</option>
+          </select>
+        </td>
+        <td>
+          <select id="use20-class">
+            <option value="none">--</option>
+            <option value="0.1">クラスJ</option>
+            <option value="0">普通席</option>
+          </select>
+        </td>
+        <td>
+          <select id="use20-rate">
+            <option value="none">--</option>
+            <option value="1">積算率100%(普通運賃など)</option>
+            <option value="0.75">積算率75%(先得・特便)</option>
+            <option value="0.5">積算率50%(パッケージ)</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <button onclick="calc();">計算</button>
+
+    <h2>結果</h2>
+    <span id="result-normal"></span><br>
+    <span id="result-cluba"></span><br>
+    <span id="diff"></span>
+  </body>
+</html>
